@@ -18,8 +18,8 @@
 <body>
 	<div class="container" id="search">
 		<div class="row mb-2">
-			<div class="col-md-12" style="height: 60px;background-color: lightgreen;">
-				<span class="float-left p-2" style="font-size: 20px;text-align: center;">ZomatoRest</span>
+			<div class="col-md-12">
+				<h1 class="float-left p-2" style="color: crimson;">ZResto</h1>
 			</div>
 		</div>
 		<div class="row">
