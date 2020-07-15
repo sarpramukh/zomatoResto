@@ -16,10 +16,13 @@
 
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="search">
+		<div >
+			
+		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div id="search">
+				<div >
 					<search-component></search-component>
 				</div>
 			</div>
