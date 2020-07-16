@@ -45,4 +45,41 @@ class findRestaurantController extends Controller
             }
         }
     }
+
+    public function searchCities(Request $req){
+        
+        try{
+    
+            // From URL to get webpage contents. 
+            $url = "https://developers.zomato.com/api/v2.1/locations?query=".$req['query']."&count=20"; 
+    
+            $client = new \GuzzleHttp\Client();
+                    
+            $result = $client->request('GET',$url, [
+                'headers' => [
+                    'user-key' => '584259ba90f2abf4a743e2956bfb524e'
+                ],  
+            ]);
+    
+            if($result->getStatusCode() == "200"){
+                //$res = json_decode($result->getBody()->getContents(),true);
+               /*   echo '<pre>';
+                echo '<b>Listed '.$res->results_found.' restaurants : </b> <br/>';
+                $j=1;
+                // SHOW 0 to 20 counts
+                foreach ($res->restaurants as $key => $value) {
+                    echo $j.' - '.$value->restaurant->name.'<br/>';
+                    $j++;
+                }*/
+                return $result->getBody()->getContents();
+            }
+    
+    
+        }catch (\GuzzleHttp\Exception\ClientException $e) { 
+    
+            if($e->getResponse()->getStatusCode() == '404'){
+                $email_error = "Mail Read Permission Error Please Contact to IT!!";
+            }
+        }
+    }
 }

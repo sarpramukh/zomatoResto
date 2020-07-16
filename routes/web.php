@@ -11,13 +11,11 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('/s', function () {
     return view('search');
 });
 
 Route::get('/search', 'findRestaurantController@searchRestaurants');
+
+Route::get('/cities','findRestaurantController@searchCities');
