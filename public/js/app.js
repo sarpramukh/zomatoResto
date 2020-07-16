@@ -969,6 +969,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_searchLocalityComponent__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_searchLocalityComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_searchLocalityComponent__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -986,6 +988,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_axios___default.a, __WEBPACK_IMPORTED_MODULE_2_axios___default.a);
 
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -995,7 +999,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_axios___default.a, __WEBPACK_IMPORTED_MO
 Vue.component('search-component', __webpack_require__(40));
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({ mode: 'history' });
-var app = new Vue(Vue.util.extend({ router: router })).$mount('#search');
+var app = new Vue({
+  router: router,
+  components: {
+    searchlocality: __WEBPACK_IMPORTED_MODULE_3__components_searchLocalityComponent___default.a
+  }
+}).$mount('#search');
 
 /***/ }),
 /* 12 */
@@ -48014,7 +48023,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        var uri = 'http://localhost:8000/search';
+        var uri = 'http://10.1.2.170:8000/search';
         this.axios.get(uri).then(function (response) {
             _this.res = response.data.restaurants;
         });
@@ -48091,6 +48100,178 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(41)
+/* script */
+var __vue_script__ = __webpack_require__(56)
+/* template */
+var __vue_template__ = __webpack_require__(57)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/searchLocalityComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1b8b374b", Component.options)
+  } else {
+    hotAPI.reload("data-v-1b8b374b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+    data: function data() {
+        return {
+            res: [],
+            query: ''
+        };
+    },
+
+    methods: {
+        findLocality: function findLocality() {
+            var _this = this;
+
+            this.query = document.getElementById("searchLocality").value;
+            var uri = 'https://www.zomato.com/php/liveSuggest.php?type=locality&q=' + this.query;
+
+            this.axios({
+                method: 'get',
+                url: uri,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Authorization',
+                    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Credentials': true,
+                    'Content-Type': 'text/html; charset=utf-8'
+                }
+            }).then(function (response) {
+                _this.res = response.data;
+            }).catch(function (error) {
+                console.log(error.message);
+            });
+        }
+    }
+
+});
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12 input-icons" }, [
+      _c(
+        "div",
+        { staticClass: "mx-auto", staticStyle: { "text-align": "center" } },
+        [
+          _c("i", {
+            staticClass: "fa fa-search icon",
+            staticStyle: { "font-size": "25px" }
+          }),
+          _c("input", {
+            staticClass: "input-field",
+            staticStyle: { width: "30%" },
+            attrs: {
+              type: "text",
+              id: "searchLocality",
+              name: "searchLocality",
+              placeholder: "Search City"
+            },
+            on: {
+              keyup: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.findLocality($event)
+              }
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", [_vm._v("   \n            " + _vm._s(_vm.res) + "\n        ")])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1b8b374b", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -1,5 +1,6 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');
+header( 'Access-Control-Allow-Headers: Authorization, Content-Type' );
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +15,8 @@
 
 Route::get('/', function () {
     return view('search');
-});
+})->middleware('cors');
 
 Route::get('/search', 'findRestaurantController@searchRestaurants');
 
-Route::get('/cities','findRestaurantController@searchCities');
+Route::get('/locality','findRestaurantController@searchCities')->middleware('cors');

@@ -15,6 +15,8 @@ import VueAxios from 'vue-axios';
 import axios from 'axios';
 Vue.use(VueAxios, axios);
 
+import searchlocality from './components/searchLocalityComponent';
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -23,5 +25,11 @@ Vue.use(VueAxios, axios);
 
 Vue.component('search-component', require('./components/searchComponent.vue'));
 
+
 const router = new VueRouter({ mode: 'history'});
-const app = new Vue(Vue.util.extend({ router })).$mount('#search');
+const app = new Vue({
+		router,
+		components:{
+			searchlocality,
+		},
+	}).$mount('#search');

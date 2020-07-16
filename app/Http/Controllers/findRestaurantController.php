@@ -41,7 +41,7 @@ class findRestaurantController extends Controller
         }catch (\GuzzleHttp\Exception\ClientException $e) { 
     
             if($e->getResponse()->getStatusCode() == '404'){
-                $email_error = "Mail Read Permission Error Please Contact to IT!!";
+                $email_error = "Error Please Contact us!!";
             }
         }
     }
@@ -51,15 +51,11 @@ class findRestaurantController extends Controller
         try{
     
             // From URL to get webpage contents. 
-            $url = "https://developers.zomato.com/api/v2.1/locations?query=".$req['query']."&count=20"; 
-    
+            $url = "https://www.zomato.com/php/liveSuggest.php?type=locality&q=".$req['q']; 
+    		
             $client = new \GuzzleHttp\Client();
-                    
-            $result = $client->request('GET',$url, [
-                'headers' => [
-                    'user-key' => '584259ba90f2abf4a743e2956bfb524e'
-                ],  
-            ]);
+            dd($url);     
+            $result = $client->get($url);
     
             if($result->getStatusCode() == "200"){
                 //$res = json_decode($result->getBody()->getContents(),true);
@@ -71,6 +67,7 @@ class findRestaurantController extends Controller
                     echo $j.' - '.$value->restaurant->name.'<br/>';
                     $j++;
                 }*/
+                echo ($result->getBody());exit;
                 return $result->getBody()->getContents();
             }
     
@@ -78,7 +75,7 @@ class findRestaurantController extends Controller
         }catch (\GuzzleHttp\Exception\ClientException $e) { 
     
             if($e->getResponse()->getStatusCode() == '404'){
-                $email_error = "Mail Read Permission Error Please Contact to IT!!";
+                $email_error = "Error Please Contact us!!";
             }
         }
     }

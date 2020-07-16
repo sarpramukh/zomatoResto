@@ -29,10 +29,11 @@
             }
         },
         created(){
-            let uri = 'http://localhost:8000/search';
+            let uri = 'http://10.1.2.170:8000/search';
             this.axios.get(uri).then(response => {
                 this.res = response.data.restaurants;
             });
         },
+        
     }
 </script>

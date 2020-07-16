@@ -45,13 +45,7 @@
 				<h1 class="float-left p-2" style="color: crimson;">ZResto</h1>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12 input-icons">
-				<div class="mx-auto" style="text-align: center;">
-					<i class="fa fa-search icon" style="font-size: 25px;"></i><input type="text" name="searchCity" class="input-field" style="width: 30%;">
-				</div>
-			</div>
-		</div>
+		<searchlocality></searchlocality>
 		<div class="row">
 			<div class="col-md-12">
 				<div >
