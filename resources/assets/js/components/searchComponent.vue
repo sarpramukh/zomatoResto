@@ -1,7 +1,7 @@
 <template>
     <div class="col-md-12 col-md-offset-2">
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Restaurants in AJAX</h4></div>
+            <div class="panel-heading"><h4>Restaurants in {{q}}</h4></div>
 
             <div class="panel-body">
                 <div v-for="r in result" class="card mb-2 p-2">
