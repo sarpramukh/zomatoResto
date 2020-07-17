@@ -15,7 +15,8 @@ import VueAxios from 'vue-axios';
 import axios from 'axios';
 Vue.use(VueAxios, axios);
 
-import searchlocality from './components/searchLocalityComponent';
+//import search from './components/searchComponent';
+import mains from './main';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -23,13 +24,14 @@ import searchlocality from './components/searchLocalityComponent';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('search-component', require('./components/searchComponent.vue'));
+//Vue.component('searchlocality', require('./components/searchLocalityComponent.vue'));
 
 
 const router = new VueRouter({ mode: 'history'});
 const app = new Vue({
 		router,
 		components:{
-			searchlocality,
+			mains,
 		},
-	}).$mount('#search');
+		template: "<mains/>"
+	}).$mount('#app');

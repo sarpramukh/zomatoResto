@@ -21,17 +21,17 @@ return [
      * You can enable CORS for 1 or multiple paths.
      * Example: ['api/*']
      */
-    'paths' => ['web/*'],
+    'paths' => ['api/*','web/*'],
 
     /*
     * Matches the request method. `[*]` allows all methods.
     */
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['GET','POST'],
 
     /*
      * Matches the request origin. `[*]` allows all origins.
      */
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['http://localhost:8080', 'http://10.1.2.170:8000','*'],
 
     /*
      * Matches the request origin with, similar to `Request::is()`

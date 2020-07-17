@@ -14,8 +14,8 @@
 
 Route::get('/', function () {
     return view('search');
-})->middleware('cors');
+});
 
 Route::get('/search', 'findRestaurantController@searchRestaurants');
 
-Route::get('/locality','findRestaurantController@searchCities');//->middleware('cors')
+Route::get('/locality','findRestaurantController@searchCities');
