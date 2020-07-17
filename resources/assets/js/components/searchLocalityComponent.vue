@@ -30,11 +30,11 @@
                 let uri = 'https://www.zomato.com/php/liveSuggest.php?type=locality&q='+this.query;
                 
                 this.axios({
-                    method: 'get',
+                    method: 'GET',
                     url: uri,
                     headers: {
                         'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Authorization',
+                        'Access-Control-Allow-Headers': 'x-csrf-token,x-requested-with',
                         'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
                         'Access-Control-Allow-Credentials': true,     
                         'Content-Type': 'text/html; charset=utf-8'   
