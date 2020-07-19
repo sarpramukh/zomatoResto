@@ -1,7 +1,7 @@
 <template>
     <div class="col-md-12 col-md-offset-2">
         <div class="panel panel-default">
-            <div class="panel-heading"><h4>Restaurants in {{q}}</h4></div>
+            <div class="panel-heading" v-if="query"><h4>Restaurants in {{query}}</h4></div>
 
             <div class="panel-body">
                 <div v-for="r in result" class="card mb-2 p-2">
@@ -27,22 +27,28 @@
         data(){
             return {
                 result : [],
-                query : ''
+                query: '',
+                eId : '',
+                eType : ''
             }
         },
-        props: {
-            msg: {
-                type: String
-            }
-        },
+        props: [
+            'entityId','entityType'
+        ],
         watch: {
-            msg: function() {
-                this.q = this.msg;
-                console.log(this.q);
-                let uri = 'http://10.1.2.170:8000/search';
-                this.axios.get(uri).then(response => {
-                    this.result = response.data.restaurants;
-                });
+            $attrs: function() {
+                this.eId = this.$attrs['entity_Id'];
+                this.eType = this.$attrs['entity_Type'];
+                this.query = this.$attrs['searchQ'];
+
+                
+                if(this.eId != '' && this.eType != ''){
+                    let uri = 'http://localhost:8000/search?entity_id='+this.eId+'&entity_type='+this.eType;
+                    this.axios.get(uri).then(response => {
+                        this.result = response.data.restaurants;
+                    });    
+                }
+                
             }
 
         }

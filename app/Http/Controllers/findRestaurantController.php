@@ -10,11 +10,13 @@ class findRestaurantController extends Controller
 {
     //
 
-    public function searchRestaurants(){
+    public function searchRestaurants(Request $req){
     	try{
-    
+            
+            $entity_id = $req['entity_id'];
+            $entity_type = $req['entity_type'];    
         	// From URL to get webpage contents. 
-    		$url = "https://developers.zomato.com/api/v2.1/search?entity_id=104485&entity_type=subzone"; 
+    		$url = "https://developers.zomato.com/api/v2.1/search?entity_id=".$entity_id."&entity_type=".$entity_type; 
     
         	$client = new \GuzzleHttp\Client();
                     
