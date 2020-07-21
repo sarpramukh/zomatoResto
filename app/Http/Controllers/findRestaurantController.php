@@ -87,4 +87,35 @@ class findRestaurantController extends Controller
             }
         }
     }
+
+    // FUNCTION TO FIND RESTAURANTS
+    public function findResto(Request $req){
+    	try{
+            
+            $entity_id = $req['entity_id'];
+            $entity_type = $req['entity_type']; 
+            $q = $req['q'];   
+        	// From URL to get webpage contents. 
+    		$url = "https://developers.zomato.com/api/v2.1/search?entity_id=".$entity_id."&entity_type=".$entity_type."&q=".$q."&count=10"; 
+    
+        	$client = new \GuzzleHttp\Client();
+                    
+            $result = $client->request('GET',$url, [
+                'headers' => [
+                    'user-key' => '584259ba90f2abf4a743e2956bfb524e'
+                ],  
+            ]);
+    
+            if($result->getStatusCode() == "200"){
+              	return $result->getBody()->getContents();
+            }
+    
+    
+        }catch (\GuzzleHttp\Exception\ClientException $e) { 
+    
+            if($e->getResponse()->getStatusCode() == '404'){
+                $email_error = "Error Please Contact us!!";
+            }
+        }
+    }
 }

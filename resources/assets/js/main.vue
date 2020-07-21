@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <searchLocality @inputSearch="searchResto" @inputSearchType="searchRestoType" @inputQuery="seachQuery"/> 
-    <search :entity_Id="searchQuery" :entity_Type="searchCityType" :searchQ="q"/>
+    <searchLocality @inputSearch="searchResto" @inputSearchType="searchRestoType" @inputQuery="seachQuery" @inputQueryResto="searchSpecificResto"/> 
+    <search :entity_Id="searchQuery" :entity_Type="searchCityType" :searchQ="q" :searchRQ="searchSpResto"/>
   </div>
 </template>
 
@@ -23,6 +23,7 @@ export default {
     return {
       searchQuery: "",
       searchCityType:'',
+      searchSpResto:'',
       q : ''
     };
   },
@@ -36,7 +37,11 @@ export default {
       this.searchCityType = variable;
     },
     seachQuery(variable){
-      this.q = variable
+      this.q = variable;
+    },
+    searchSpecificResto(variable) {
+      //console.log(variable);
+      this.searchSpResto = variable;
     }
   }
 };

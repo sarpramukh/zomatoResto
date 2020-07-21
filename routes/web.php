@@ -19,3 +19,5 @@ Route::get('/', function () {
 Route::get('/search', 'findRestaurantController@searchRestaurants');
 
 Route::get('/locality','findRestaurantController@searchCities');
+
+Route::get('/resto','findRestaurantController@findResto');
